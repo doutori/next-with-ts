@@ -12,9 +12,9 @@ workflows:
           requires:
             - request-build_and_push
           context: ecr-sample
-          account-url: AWS_ECR_ACCOUNT_URL
-          aws-access-key-id: AWS_ACCESS_KEY_ID
-          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-          region: AWS_REGION
-          repo: REPO_NAME
-          path: './docker/app'
+          account-url: ${AWS_ECR_ACCOUNT_URL}
+          aws-access-key-id: ${AWS_ACCESS_KEY_ID}
+          aws-secret-access-key: ${AWS_SECRET_ACCESS_KEY}
+          region: ${AWS_REGION}
+          repo: ${REPO_NAME}
+          path: "./docker/app"

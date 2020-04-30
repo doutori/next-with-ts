@@ -5,6 +5,9 @@ FROM node:12.14.1-alpine AS development
 
 WORKDIR /app
 
+RUN pwd
+RUN ls -la
+
 COPY package*.json ./
 RUN npm install -g npm && \
     npm install

@@ -17,4 +17,4 @@ workflows:
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           region: AWS_REGION
           repo: REPO_NAME
-          tag: DOCKER_IMAGE_TAG
+          path: './docker/app'

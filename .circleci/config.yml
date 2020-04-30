@@ -6,8 +6,8 @@ orbs:
 workflows:
   build_and_push_image:
     jobs:
-      - request-build_and_push:
-          type: approval
+#      - request-build_and_push:
+#          type: approval
       - aws-ecr/build-and-push-image:
           requires:
             - request-build_and_push

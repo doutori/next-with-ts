@@ -2,24 +2,14 @@ version: 2.1
 
 orbs:
   aws-ecr: circleci/aws-ecr@6.8.2
-  node: circleci/node@2.0.3
-
-jobs:
-  setup:
-    executor:
-      name: node/default
-    steps:
-      - checkout
 
 workflows:
   build_and_push_image:
     jobs:
-      - setup
 #      - request-build_and_push:
 #          type: approval
       - aws-ecr/build-and-push-image:
-          requires:
-            - setup
+#          requires:
 #            - request-build_and_push
           context: ecr-sample
           account-url: AWS_ECR_ACCOUNT_URL
@@ -27,4 +17,4 @@ workflows:
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           region: AWS_REGION
           repo: "${REPO_NAME}"
-          path: "./docker/app"
+#          path: "./docker/app"

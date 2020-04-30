@@ -17,4 +17,4 @@ workflows:
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           region: AWS_REGION
           repo: "${REPO_NAME}"
-#          path: "./docker/app"
+          path: "./docker/app"

@@ -1,17 +1,20 @@
 version: 2.1
+
 orbs:
-  node: circleci/node@1.1.6
-jobs:
-  build-and-test:
-    executor:
-      name: node/default
-    steps:
-      - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: npm test
+  aws-ecr: circleci/aws-ecr@6.8.2
+
 workflows:
-    build-and-test:
-      jobs:
-        - build-and-test
+  build_and_push_image:
+    jobs:
+      - request-build_and_push:
+          type: approval
+      - aws-ecr/build-and-push-image:
+          requires:
+            - request-build_and_push
+          context: ecr-sample
+          account-url: AWS_ECR_ACCOUNT_URL
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          region: AWS_REGION
+          repo: <REPO_NAME>
+          tag: <DOCKER_IMAGE_TAG>

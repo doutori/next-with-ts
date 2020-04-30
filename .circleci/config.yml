@@ -2,19 +2,24 @@ version: 2.1
 
 orbs:
   aws-ecr: circleci/aws-ecr@6.8.2
+  node: circleci/node@2.0.3
 
 jobs:
   setup:
-    - checkout
+    executor:
+      name: node/default
+    steps:
+      - checkout
 
 workflows:
   build_and_push_image:
     jobs:
-      - checkout
+      - setup
 #      - request-build_and_push:
 #          type: approval
       - aws-ecr/build-and-push-image:
-#          requires:
+          requires:
+            - setup
 #            - request-build_and_push
           context: ecr-sample
           account-url: AWS_ECR_ACCOUNT_URL

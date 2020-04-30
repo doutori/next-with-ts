@@ -5,7 +5,7 @@ FROM node:12.14.1-alpine AS development
 
 WORKDIR /app
 
-RUN pwd && ..
+RUN pwd && cd ..
 RUN ls -la
 
 COPY package*.json ./

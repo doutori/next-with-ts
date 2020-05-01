@@ -27,6 +27,7 @@ workflows:
           type: approval
 
       - aws-ecr/build-and-push-image:
+          name: aws-ecr/build-and-push-app-image
           requires:
             - request-build_and_push
           context: ecr-sample
@@ -39,6 +40,7 @@ workflows:
           dockerfile: "./docker/app/Dockerfile"
 
       - aws-ecr/build-and-push-image:
+          name: aws-ecr/build-and-push-web-image
           requires:
             - request-build_and_push
           context: ecr-sample
